@@ -160,7 +160,7 @@ const plugins = [
 
 export default defineConfig({
   plugins,
-  base: process.env.BASE_PATH || "/",
+  base: process.env.BASE_PATH || "",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

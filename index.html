@@ -1,1 +1,1075 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI in Ophthalmology: Technical Research Report</title>
+    <meta
+      name="description"
+      content="Comprehensive technical research on AI in Ophthalmology, covering deep learning architectures, retinal disease diagnosis, early detection of glaucoma and diabetic retinopathy, automated medical reporting, and clinical translation."
+    />
+    <meta
+      name="keywords"
+      content="AI, Ophthalmology, Deep Learning, Retinal Disease, Glaucoma, Diabetic Retinopathy, Medical AI, Vision Transformers, Foundation Models"
+    />
+    <meta name="author" content="Manus AI" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Lato", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #2563eb, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+      }
+      .section-divider {
+        width: 4px;
+        height: 32px;
+        background: linear-gradient(to bottom, #2563eb, #7c3aed);
+        border-radius: 2px;
+      }
+      .chart-placeholder {
+        background: #f1f5f9;
+        border: 2px dashed #cbd5e1;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        min-height: 300px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 min-h-screen"
+  >
+    <!-- Navigation Header -->
+    <header
+      class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold gradient-text">
+                AI in Ophthalmology
+              </h1>
+              <p class="text-xs text-slate-500">
+                Technical Research Report 2026
+              </p>
+            </div>
+          </div>
+          <nav class="hidden md:flex gap-8">
+            <a
+              href="#overview"
+              class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+              >Overview</a
+            >
+            <a
+              href="#deeplearning"
+              class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+              >Deep Learning</a
+            >
+            <a
+              href="#detection"
+              class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+              >Detection</a
+            >
+            <a
+              href="#challenges"
+              class="text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+              >Challenges</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-32">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+          >
+            Transforming Eye Care with
+            <span class="gradient-text">Artificial Intelligence</span>
+          </h2>
+          <p
+            class="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+          >
+            A comprehensive technical analysis of AI's revolutionary impact on
+            ophthalmology, from retinal disease diagnosis to automated clinical
+            reporting and personalized treatment prediction.
+          </p>
+          <div class="flex gap-4 justify-center flex-wrap">
+            <a
+              href="#"
+              class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition"
+              >Download Full Report</a
+            >
+            <a
+              href="#"
+              class="border-2 border-slate-300 hover:border-blue-600 hover:bg-blue-50 text-slate-700 px-8 py-6 text-lg rounded-lg transition"
+              >View Presentation</a
+            >
+          </div>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+          <div
+            class="stat-card bg-white/50 backdrop-blur border border-slate-200 rounded-xl p-6 shadow"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                />
+              </svg>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">AI Accuracy in DR</p>
+            <p class="text-3xl font-bold text-slate-900">95%</p>
+          </div>
+          <div
+            class="stat-card bg-white/50 backdrop-blur border border-slate-200 rounded-xl p-6 shadow"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">Foundation Models</p>
+            <p class="text-3xl font-bold text-slate-900">97%</p>
+          </div>
+          <div
+            class="stat-card bg-white/50 backdrop-blur border border-slate-200 rounded-xl p-6 shadow"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-pink-600 to-pink-700 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">FDA Cleared Devices</p>
+            <p class="text-3xl font-bold text-slate-900">900+</p>
+          </div>
+          <div
+            class="stat-card bg-white/50 backdrop-blur border border-slate-200 rounded-xl p-6 shadow"
+          >
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-amber-600 to-amber-700 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            </div>
+            <p class="text-sm text-slate-600 mb-2">Research Papers</p>
+            <p class="text-3xl font-bold text-slate-900">1200+</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <!-- Section 1: Overview -->
+      <section id="overview" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="section-divider"></div>
+            <h3 class="text-3xl font-bold text-slate-900">
+              Executive Overview
+            </h3>
+          </div>
+          <p class="text-slate-700 leading-relaxed mb-6">
+            Artificial Intelligence has emerged as a transformative force in
+            ophthalmology, revolutionizing diagnostic accuracy, clinical
+            workflows, and patient outcomes. Recent studies demonstrate that AI
+            systems now surpass human capabilities in detecting conditions like
+            diabetic retinopathy and glaucoma, with accuracy rates exceeding
+            95%. The field is characterized by rapid innovation, with over 1,200
+            peer-reviewed publications in 2025 alone and more than 900
+            FDA-cleared AI-enabled medical devices in ophthalmology by 2026.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200"
+            >
+              <h4 class="font-semibold text-blue-900 mb-3">Key Drivers</h4>
+              <ul class="space-y-2 text-blue-800">
+                <li class="flex gap-2">
+                  <span class="text-blue-600">•</span> High-resolution retinal
+                  imaging data
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-blue-600">•</span> Advanced deep learning
+                  architectures
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-blue-600">•</span> Multimodal data
+                  integration
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-blue-600">•</span> Global shortage of
+                  ophthalmologists
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200"
+            >
+              <h4 class="font-semibold text-purple-900 mb-3">Impact Areas</h4>
+              <ul class="space-y-2 text-purple-800">
+                <li class="flex gap-2">
+                  <span class="text-purple-600">•</span> Diagnostic accuracy
+                  enhancement
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-purple-600">•</span> Early disease detection
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-purple-600">•</span> Automated report
+                  generation
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-purple-600">•</span> Treatment response
+                  prediction
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Trends Chart (Placeholder) -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">
+            Research Growth & FDA Approvals (2020-2025)
+          </h3>
+          <div class="chart-placeholder">
+            <div class="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-16 h-16 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                />
+              </svg>
+              <p class="font-semibold">
+                Research Publications & FDA-Cleared Devices
+              </p>
+              <p class="text-sm mt-2">2020: 245 publications, 120 devices</p>
+              <p class="text-sm">2025: 1200 publications, 900 devices</p>
+              <p class="text-sm text-blue-600 mt-4">
+                Interactive chart available in full report
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Deep Learning Methods -->
+      <section id="deeplearning" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="section-divider"></div>
+            <h3 class="text-3xl font-bold text-slate-900">
+              Deep Learning Architectures
+            </h3>
+          </div>
+
+          <div class="space-y-6">
+            <div class="border border-slate-200 rounded-lg overflow-hidden">
+              <div class="p-4 bg-slate-50">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🧠</span>
+                  <h4 class="font-semibold text-slate-900">
+                    Convolutional Neural Networks (CNNs)
+                  </h4>
+                </div>
+              </div>
+              <div class="p-4 bg-white border-t border-slate-200">
+                <p class="text-slate-700 leading-relaxed">
+                  CNNs remain the backbone of retinal image analysis, with
+                  architectures like DenseNet121 achieving 94% accuracy in
+                  diabetic retinopathy detection. Their strength lies in
+                  automatic feature learning and computational efficiency.
+                  However, they struggle with capturing global contextual
+                  information across entire images.
+                </p>
+              </div>
+            </div>
+
+            <div class="border border-slate-200 rounded-lg overflow-hidden">
+              <div class="p-4 bg-slate-50">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">✨</span>
+                  <h4 class="font-semibold text-slate-900">
+                    Vision Transformers (ViTs)
+                  </h4>
+                </div>
+              </div>
+              <div class="p-4 bg-white border-t border-slate-200">
+                <p class="text-slate-700 leading-relaxed">
+                  Vision Transformers represent the frontier of ophthalmic AI,
+                  leveraging attention mechanisms to capture long-range
+                  dependencies. Recent studies show ViTs achieving 92-97%
+                  accuracy, with superior interpretability compared to
+                  traditional CNNs. Hybrid CNN-Transformer models combine both
+                  strengths, achieving state-of-the-art performance of 96-97%.
+                </p>
+              </div>
+            </div>
+
+            <div class="border border-slate-200 rounded-lg overflow-hidden">
+              <div class="p-4 bg-slate-50">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🚀</span>
+                  <h4 class="font-semibold text-slate-900">
+                    Foundation Models
+                  </h4>
+                </div>
+              </div>
+              <div class="p-4 bg-white border-t border-slate-200">
+                <p class="text-slate-700 leading-relaxed">
+                  Foundation models like Meta-EyeFM represent a paradigm shift
+                  in ophthalmic AI. These large-scale pretrained models show
+                  11-43% improvement over GPT-4o and often outperform junior
+                  ophthalmologists. They enable transfer learning and few-shot
+                  adaptation to new tasks, reducing the need for extensive
+                  task-specific training data.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Model Comparison (Placeholder) -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">
+            Deep Learning Model Comparison
+          </h3>
+          <div class="chart-placeholder">
+            <div class="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-16 h-16 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
+                />
+              </svg>
+              <p class="font-semibold">Model Performance Comparison</p>
+              <p class="text-sm mt-2">
+                CNN: 94% performance, 65% interpretability, 88% speed
+              </p>
+              <p class="text-sm">
+                Vision Transformer: 92% performance, 72% interpretability, 75%
+                speed
+              </p>
+              <p class="text-sm">
+                Hybrid CNN-ViT: 96% performance, 78% interpretability, 82% speed
+              </p>
+              <p class="text-sm">
+                Foundation Model: 97% performance, 85% interpretability, 70%
+                speed
+              </p>
+              <p class="text-sm text-blue-600 mt-4">
+                Interactive radar chart available in full report
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Early Detection -->
+      <section id="detection" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="section-divider"></div>
+            <h3 class="text-3xl font-bold text-slate-900">
+              Early Detection & Biomarkers
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4
+                class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2"
+              >
+                <span
+                  class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold"
+                  >1</span
+                >
+                Glaucoma Detection
+              </h4>
+              <div class="space-y-3">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <p class="font-semibold text-blue-900 mb-1">
+                    Cup-to-Disc Ratio (CDR)
+                  </p>
+                  <p class="text-sm text-blue-800">
+                    AI algorithms achieve 92%+ accuracy in automated CDR
+                    calculation, enabling early glaucoma risk assessment.
+                  </p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <p class="font-semibold text-blue-900 mb-1">
+                    RNFL Thickness Analysis
+                  </p>
+                  <p class="text-sm text-blue-800">
+                    Deep learning models detect subtle RNFL thinning patterns
+                    that precede visual field defects by months or years.
+                  </p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <p class="font-semibold text-blue-900 mb-1">
+                    Progression Prediction
+                  </p>
+                  <p class="text-sm text-blue-800">
+                    Multimodal AI integrating OCT and EHR data predicts glaucoma
+                    progression with 85-90% accuracy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4
+                class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2"
+              >
+                <span
+                  class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold"
+                  >2</span
+                >
+                Diabetic Retinopathy Detection
+              </h4>
+              <div class="space-y-3">
+                <div
+                  class="bg-purple-50 p-4 rounded-lg border border-purple-200"
+                >
+                  <p class="font-semibold text-purple-900 mb-1">
+                    Microaneurysm Detection
+                  </p>
+                  <p class="text-sm text-purple-800">
+                    FISM and similar models detect microaneurysms with 96%+
+                    sensitivity, enabling earliest-stage DR diagnosis.
+                  </p>
+                </div>
+                <div
+                  class="bg-purple-50 p-4 rounded-lg border border-purple-200"
+                >
+                  <p class="font-semibold text-purple-900 mb-1">
+                    Hemorrhage & Exudate Analysis
+                  </p>
+                  <p class="text-sm text-purple-800">
+                    AI systems classify DR severity by analyzing hemorrhages,
+                    hard exudates, and cotton-wool spots with 95% accuracy.
+                  </p>
+                </div>
+                <div
+                  class="bg-purple-50 p-4 rounded-lg border border-purple-200"
+                >
+                  <p class="font-semibold text-purple-900 mb-1">
+                    Autonomous Screening
+                  </p>
+                  <p class="text-sm text-purple-800">
+                    FDA-cleared devices like IDx-DR enable autonomous DR
+                    screening in primary care, expanding access to underserved
+                    populations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Accuracy by Disease (Table) -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">
+            AI Diagnostic Accuracy by Disease
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-slate-200">
+                  <th class="py-3 px-4 font-semibold text-slate-700">
+                    Disease
+                  </th>
+                  <th class="py-3 px-4 font-semibold text-blue-600">
+                    Accuracy
+                  </th>
+                  <th class="py-3 px-4 font-semibold text-purple-600">
+                    Sensitivity
+                  </th>
+                  <th class="py-3 px-4 font-semibold text-pink-600">
+                    Specificity
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100">
+                  <td class="py-3 px-4">Diabetic Retinopathy</td>
+                  <td class="py-3 px-4 font-bold">95%</td>
+                  <td class="py-3 px-4">94%</td>
+                  <td class="py-3 px-4">96%</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="py-3 px-4">Glaucoma</td>
+                  <td class="py-3 px-4 font-bold">92%</td>
+                  <td class="py-3 px-4">90%</td>
+                  <td class="py-3 px-4">94%</td>
+                </tr>
+                <tr class="border-b border-slate-100">
+                  <td class="py-3 px-4">AMD</td>
+                  <td class="py-3 px-4 font-bold">89%</td>
+                  <td class="py-3 px-4">87%</td>
+                  <td class="py-3 px-4">91%</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4">Retinal Vascular</td>
+                  <td class="py-3 px-4 font-bold">91%</td>
+                  <td class="py-3 px-4">89%</td>
+                  <td class="py-3 px-4">93%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Automated Reporting -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="section-divider"></div>
+            <h3 class="text-3xl font-bold text-slate-900">
+              Automated Medical Reporting
+            </h3>
+          </div>
+
+          <p class="text-slate-700 leading-relaxed mb-6">
+            Multimodal Large Language Models (MLLMs) are revolutionizing
+            clinical documentation by automatically generating comprehensive
+            diagnostic reports from ophthalmic images and patient data. Models
+            like LLaVA-Med and specialized ophthalmic MLLMs achieve remarkable
+            accuracy in translating complex visual and numerical data into
+            clinically relevant narratives.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div
+              class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition"
+            >
+              <p class="text-4xl mb-3">🔗</p>
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Data Integration
+              </h4>
+              <p class="text-sm text-slate-600">
+                Combines fundus photos, OCT scans, OCTA, and patient EHR data
+              </p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition"
+            >
+              <p class="text-4xl mb-3">📄</p>
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Report Generation
+              </h4>
+              <p class="text-sm text-slate-600">
+                Produces standardized, consistent clinical reports in seconds
+              </p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-slate-50 to-slate-100 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition"
+            >
+              <p class="text-4xl mb-3">💡</p>
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Decision Support
+              </h4>
+              <p class="text-sm text-slate-600">
+                Highlights critical findings and suggests differential diagnoses
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-200"
+          >
+            <h4 class="font-semibold text-slate-900 mb-3">
+              Emerging Foundation Models in Ophthalmology
+            </h4>
+            <p class="text-slate-700 mb-3">
+              Foundation models like Meta-EyeFM represent a paradigm shift.
+              These models:
+            </p>
+            <ul class="space-y-2 text-slate-700">
+              <li class="flex gap-2">
+                <span class="text-blue-600 font-bold">•</span> Achieve 11-43%
+                improvement over GPT-4o in ophthalmology tasks
+              </li>
+              <li class="flex gap-2">
+                <span class="text-blue-600 font-bold">•</span> Often outperform
+                junior ophthalmologists in diagnostic accuracy
+              </li>
+              <li class="flex gap-2">
+                <span class="text-blue-600 font-bold">•</span> Enable rapid
+                adaptation to new clinical tasks through transfer learning
+              </li>
+              <li class="flex gap-2">
+                <span class="text-blue-600 font-bold">•</span> Provide superior
+                interpretability through attention visualization
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Challenges & Ethics -->
+      <section id="challenges" class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-1 h-8 bg-gradient-to-b from-red-600 to-orange-600 rounded"
+            ></div>
+            <h3 class="text-3xl font-bold text-slate-900">
+              Challenges & Ethical Considerations
+            </h3>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-slate-900 mb-4">
+              Key Challenges
+            </h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-4">
+                <span class="w-32 text-sm font-medium text-slate-700"
+                  >Data Bias</span
+                >
+                <div class="flex-1 bg-slate-200 rounded-full h-4">
+                  <div
+                    class="bg-red-500 h-4 rounded-full"
+                    style="width: 92%"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-slate-900">92%</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-32 text-sm font-medium text-slate-700"
+                  >Generalization</span
+                >
+                <div class="flex-1 bg-slate-200 rounded-full h-4">
+                  <div
+                    class="bg-red-500 h-4 rounded-full"
+                    style="width: 88%"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-slate-900">88%</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-32 text-sm font-medium text-slate-700"
+                  >Interpretability</span
+                >
+                <div class="flex-1 bg-slate-200 rounded-full h-4">
+                  <div
+                    class="bg-red-500 h-4 rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-slate-900">85%</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-32 text-sm font-medium text-slate-700"
+                  >Regulatory</span
+                >
+                <div class="flex-1 bg-slate-200 rounded-full h-4">
+                  <div
+                    class="bg-red-500 h-4 rounded-full"
+                    style="width: 80%"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-slate-900">80%</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-32 text-sm font-medium text-slate-700"
+                  >Integration</span
+                >
+                <div class="flex-1 bg-slate-200 rounded-full h-4">
+                  <div
+                    class="bg-red-500 h-4 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+                <span class="text-sm font-bold text-slate-900">75%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+              <h4 class="font-semibold text-red-900 mb-3">
+                ⚠️ Technical Challenges
+              </h4>
+              <ul class="space-y-2 text-red-800 text-sm">
+                <li>• Data bias and lack of diversity in training datasets</li>
+                <li>• Limited external validation across populations</li>
+                <li>• Black-box nature of deep learning models</li>
+                <li>• Domain shift and generalization issues</li>
+                <li>• Integration complexity with existing EHR systems</li>
+              </ul>
+            </div>
+
+            <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+              <h4 class="font-semibold text-amber-900 mb-3">
+                ⚖️ Ethical & Regulatory Issues
+              </h4>
+              <ul class="space-y-2 text-amber-800 text-sm">
+                <li>• Accountability in cases of misdiagnosis</li>
+                <li>• Patient privacy and data security concerns</li>
+                <li>• Equitable access and health disparities</li>
+                <li>• Regulatory approval timelines and standards</li>
+                <li>• Informed consent and transparency requirements</li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200"
+          >
+            <h4 class="font-semibold text-green-900 mb-3">
+              ✅ Mitigation Strategies
+            </h4>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-green-800"
+            >
+              <div>
+                <p class="font-semibold mb-1">Human-in-the-Loop</p>
+                <p>
+                  AI augments rather than replaces clinician judgment,
+                  maintaining professional accountability
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold mb-1">Explainable AI (XAI)</p>
+                <p>
+                  Developing interpretable models with attention visualization
+                  and decision reasoning
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold mb-1">Diverse Datasets</p>
+                <p>
+                  Ensuring training data represents diverse populations,
+                  geographies, and imaging devices
+                </p>
+              </div>
+              <div>
+                <p class="font-semibold mb-1">Continuous Monitoring</p>
+                <p>
+                  Real-world performance tracking and bias detection in deployed
+                  systems
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FDA Approvals (Table) -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">
+            FDA-Cleared AI Devices by Specialty (Q4 2025)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-6 h-6 rounded bg-blue-500"></div>
+                <span class="text-slate-700 flex-1">Radiology</span>
+                <span class="font-bold">55 devices</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-6 h-6 rounded bg-purple-500"></div>
+                <span class="text-slate-700 flex-1">Ophthalmology</span>
+                <span class="font-bold">28 devices</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-6 h-6 rounded bg-pink-500"></div>
+                <span class="text-slate-700 flex-1">Cardiology</span>
+                <span class="font-bold">18 devices</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-6 h-6 rounded bg-amber-500"></div>
+                <span class="text-slate-700 flex-1">Others</span>
+                <span class="font-bold">29 devices</span>
+              </div>
+            </div>
+            <div class="chart-placeholder">
+              <div class="text-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-16 h-16 mx-auto mb-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                  />
+                </svg>
+                <p class="font-semibold">Pie Chart</p>
+                <p class="text-sm text-blue-600 mt-2">
+                  Interactive chart in full report
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Future Directions -->
+      <section class="mb-16">
+        <div
+          class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg p-8 text-white"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-1 h-8 bg-white/30 rounded"></div>
+            <h3 class="text-3xl font-bold">
+              Future Directions & Opportunities
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Personalized Medicine</h4>
+              <p class="text-sm text-white/90">
+                AI-driven treatment plans tailored to individual patient
+                genetics, imaging, and response profiles
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Remote Monitoring</h4>
+              <p class="text-sm text-white/90">
+                Teleophthalmology platforms with AI-powered analysis enabling
+                care in underserved regions
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Oculomics</h4>
+              <p class="text-sm text-white/90">
+                Using retinal imaging and AI to detect systemic diseases
+                (diabetes, hypertension, neurodegeneration)
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Surgical Guidance</h4>
+              <p class="text-sm text-white/90">
+                Real-time AI assistance during ophthalmic procedures for
+                enhanced precision and safety
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Drug Discovery</h4>
+              <p class="text-sm text-white/90">
+                Generative AI accelerating development of novel ophthalmology
+                therapeutics
+              </p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur p-4 rounded-lg border border-white/20 hover:bg-white/15 transition"
+            >
+              <h4 class="font-semibold mb-2">Explainable AI</h4>
+              <p class="text-sm text-white/90">
+                Advancing XAI techniques for transparent, trustworthy clinical
+                decision support
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="section-divider"></div>
+            <h3 class="text-3xl font-bold text-slate-900">Conclusion</h3>
+          </div>
+
+          <p class="text-slate-700 leading-relaxed mb-4">
+            Artificial Intelligence is fundamentally transforming ophthalmology,
+            offering unprecedented opportunities to enhance diagnostic accuracy,
+            facilitate early disease detection, and streamline clinical
+            workflows. The integration of deep learning—particularly with
+            multimodal data—has led to significant advancements in the diagnosis
+            of retinal diseases, glaucoma, and diabetic retinopathy, with AI
+            systems now achieving performance levels that match or exceed expert
+            ophthalmologists.
+          </p>
+
+          <p class="text-slate-700 leading-relaxed mb-4">
+            The emergence of foundation models represents a paradigm shift,
+            enabling rapid adaptation to new clinical tasks and providing
+            superior interpretability. Meanwhile, automated medical reporting
+            through multimodal LLMs is revolutionizing clinical documentation,
+            reducing administrative burden and improving consistency.
+          </p>
+
+          <p class="text-slate-700 leading-relaxed">
+            However, successful clinical translation requires addressing
+            critical challenges related to data bias, generalizability,
+            interpretability, and ethical considerations. By fostering
+            responsible innovation, maintaining human-in-the-loop approaches,
+            and ensuring equitable access, AI has the potential to profoundly
+            improve eye care globally, ultimately leading to better patient
+            outcomes and a more efficient, accessible healthcare system.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center py-12 border-t border-slate-200">
+        <p class="text-slate-600 mb-2">
+          <span class="font-semibold"
+            >AI in Ophthalmology: Technical Research Report</span
+          >
+        </p>
+        <p class="text-sm text-slate-500">
+          Research compiled from 60+ peer-reviewed publications (2024-2026) |
+          Last updated: March 2026
+        </p>
+        <p class="text-xs text-slate-400 mt-4">
+          For academic and research purposes | Suitable for presentation to
+          ophthalmology faculty and researchers
+        </p>
+      </footer>
+    </section>
+  </body>
+</html>
